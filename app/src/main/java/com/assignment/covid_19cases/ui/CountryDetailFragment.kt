@@ -42,7 +42,8 @@ class CountryDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.markerOnMap.setOnClickListener {
-            findNavController().navigate(CountryDetailFragmentDirections.actionCountryDetailFragmentToMapsFragment(detailViewModel.countryDetail.value?.longitude!!,detailViewModel.countryDetail.value?.latitude!!))
+            findNavController().navigate(CountryDetailFragmentDirections.actionCountryDetailFragmentToMapsFragment(detailViewModel.countryDetail.value?.longitude!!,detailViewModel.countryDetail.value?.latitude!!,
+            detailViewModel.countryDetail.value?.country!!))
         }
 
     }

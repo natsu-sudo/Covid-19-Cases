@@ -104,6 +104,7 @@ class CountryListFragment : Fragment() {
             }else{
                 Snackbar.make(binding.root, getString(R.string.network_error), Snackbar.LENGTH_LONG)
                     .setAction(getString(R.string.ok)) {
+                        countryListViewModel.fetchFromNetwork()
                     }
                     .show()
                 binding.swipeUp.isRefreshing=false
