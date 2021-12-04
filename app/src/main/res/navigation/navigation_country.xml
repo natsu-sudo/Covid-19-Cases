@@ -18,5 +18,9 @@
         android:id="@+id/countryDetailFragment"
         android:name="com.assignment.covid_19cases.ui.CountryDetailFragment"
         android:label="fragment_countr_detail"
-        tools:layout="@layout/fragment_countr_detail" />
+        tools:layout="@layout/fragment_countr_detail" >
+        <argument
+            android:name="country_code"
+            app:argType="string" />
+    </fragment>
 </navigation>

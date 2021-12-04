@@ -1,19 +1,20 @@
 package com.assignment.covid_19cases.ui
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
 import android.os.Bundle
+import android.telephony.TelephonyManager
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -24,10 +25,8 @@ import com.assignment.covid_19cases.pojo.ErrorCode
 import com.assignment.covid_19cases.pojo.Status
 import com.assignment.covid_19cases.viewmodel.CountryListViewModel
 import com.assignment.covid_19cases.viewmodel.CountryListViewModelFactory
-import com.google.android.material.snackbar.Snackbar
-import android.telephony.TelephonyManager
-import androidx.core.location.LocationManagerCompat.getCurrentLocation
 import com.bumptech.glide.Glide
+import com.google.android.material.snackbar.Snackbar
 
 
 private const val TAG = "CountryListFragment"
@@ -55,15 +54,15 @@ class CountryListFragment : Fragment() {
         val locale:String = getCurrentLocations()
         Log.d(TAG, "onViewCreated Country Name: $locale")
         binding.currentLocationFlag
-        val sf1 = String.format("https://flagcdn.com/h40/%s.png",
-            locale.lowercase())
         Glide.with(view)
-            .load(sf1)
+            .load(getString(R.string.flag_url,getCurrentLocations()))
             .error(R.drawable.ic_launcher_background)
             .into(binding.currentLocationFlag)
         binding.listRecycler.apply {
             layoutManager=LinearLayoutManager(context)
-            adapter=CountryListAdapter()
+            adapter=CountryListAdapter{
+                findNavController().navigate(CountryListFragmentDirections.actionCountryListFragmentToCountryDetailFragment(it))
+            }
             isNestedScrollingEnabled = true;
             setHasFixedSize(false);
             hasFixedSize()

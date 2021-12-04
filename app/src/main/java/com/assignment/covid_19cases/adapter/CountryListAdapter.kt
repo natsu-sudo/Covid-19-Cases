@@ -14,28 +14,28 @@ import com.bumptech.glide.Glide
 
 
 private const val TAG = "CountryListAdapter"
-class CountryListAdapter: ListAdapter<CountriesDetail, CountryListAdapter.ViewHolder>(DiffCallback()) {
+class CountryListAdapter(private val listener:(String)->Unit): ListAdapter<CountriesDetail, CountryListAdapter.ViewHolder>(DiffCallback()) {
     var previous=""
     var current=""
-    inner class ViewHolder(private val view:View):RecyclerView.ViewHolder(view) {
-        val alphabetIndex:TextView=itemView.findViewById(R.id.country_first_alphabet)
-        val countryName:TextView=itemView.findViewById(R.id.current_location_country_name_recy)
-        val flag:ImageView=itemView.findViewById(R.id.current_location_flag)
-
+    inner class ViewHolder(view:View):RecyclerView.ViewHolder(view) {
+        private val alphabetIndex:TextView=itemView.findViewById(R.id.country_first_alphabet)
+        private val countryName:TextView=itemView.findViewById(R.id.current_location_country_name_recy)
+        private val flag:ImageView=itemView.findViewById(R.id.current_location_flag)
+        init {
+            itemView.setOnClickListener {
+                listener.invoke(getItem(adapterPosition).alpha2code)
+            }
+        }
         fun onBind(item: CountriesDetail) {
             if (previous != current){
                 alphabetIndex.visibility=View.VISIBLE
                 alphabetIndex.text= current
             }
-            val sf1 = String.format("https://flagcdn.com/h40/%s.png",
-                item.alpha2code.lowercase())
             Glide.with(itemView)
-                .load(sf1)
+                .load(itemView.context.getString(R.string.flag_url,item.alpha2code.lowercase()))
                 .error(R.drawable.ic_launcher_background)
                 .into(flag)
             countryName.text=item.name
-
-
         }
 
     }
