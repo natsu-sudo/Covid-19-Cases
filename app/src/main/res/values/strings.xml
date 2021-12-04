@@ -19,4 +19,6 @@
     <string name="active_cases">Active Cases</string>
     <string name="serious_critical">Serious/Critical</string>
     <string name="new_cases">New Cases</string>
+    <string name="last_updated">Last Updated</string>
+    <string name="last_changed">Last Changed</string>
 </resources>

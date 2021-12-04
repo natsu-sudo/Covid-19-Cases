@@ -6,5 +6,7 @@ object Constants {
     const val RAPID_HOST_API="x-rapidapi-host"
     const val RAPID_HOST_API_VALUE="covid-19-data.p.rapidapi.com"
     const val RAPID_HOST_API_KEY="x-rapidapi-key"
+    const val COUNTRY_CODE="country/code"
+    const val CODE="code"
 
 }

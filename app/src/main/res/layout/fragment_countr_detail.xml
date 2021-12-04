@@ -3,6 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.CountryDetailFragment">
 
+    <data>
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.assignment.covid_19cases.viewmodel.DetailViewModel" />
+    </data>
+
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -14,6 +22,16 @@
             android:layout_height="@dimen/density_pixel_300"
             android:background="#CD2B2B" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:textColor="@color/white"
+            android:layout_margin="@dimen/scale_pixel_20"
+            android:textSize="@dimen/scale_pixel_30"
+            android:text="@{viewModel.countryDetail.country}"
+
+            />
+
         <ImageView
             android:layout_width="@dimen/scale_pixel_50"
             android:layout_height="@dimen/scale_pixel_50"
@@ -22,6 +40,7 @@
             android:layout_marginTop="@dimen/scale_pixel_10"
             app:srcCompat="@drawable/ic_baseline_location_on_24"
             android:contentDescription="@string/_4_825">
+
 
         </ImageView>
 
@@ -66,7 +85,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/density_pixel_10"
-                        android:text="@string/_4_825"
+                        android:text="@{viewModel.countryDetail.deaths}"
                         android:textColor="#CD2B2B"
                         android:textSize="@dimen/scale_pixel_30" />
 
@@ -93,7 +112,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/density_pixel_10"
-                        android:text="@string/_4_825"
+                        android:text="@{viewModel.countryDetail.recovered}"
                         android:textColor="#64DD17"
                         android:textSize="@dimen/scale_pixel_30" />
 
@@ -127,7 +146,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/scale_pixel_10"
                     android:layout_marginBottom="@dimen/scale_pixel_20"
-                    android:text="@string/_4_825"
+                    android:text="@{viewModel.countryDetail.confirmed}"
                     android:textSize="@dimen/scale_pixel_30">
 
                 </TextView>
@@ -161,13 +180,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/density_pixel_10"
-                        android:text="@string/_4_825"
+                        android:text="@{viewModel.countryDetail.critical}"
                         android:textSize="@dimen/scale_pixel_30" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
                 <androidx.appcompat.widget.LinearLayoutCompat
-                    android:id="@+id/newcases"
                     android:layout_width="match_parent"
                     android:layout_height="170dp"
                     android:layout_margin="@dimen/density_pixel_10"
@@ -178,19 +196,34 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/black"
                         android:layout_margin="@dimen/density_pixel_10"
-                        android:text="@string/new_cases"
+                        android:text="@string/last_updated"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/scale_pixel_20" />
 
                     <TextView
-
-                        android:id="@+id/cases"
+                        android:id="@+id/last_updated"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/density_pixel_10"
-                        android:text="@string/_4_825"
-                        android:textSize="@dimen/scale_pixel_30" />
+                        android:text="@{viewModel.getLastUpdateTime}"
+                        android:textSize="@dimen/scale_pixel_20" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/density_pixel_10"
+                        android:text="@string/last_changed"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/scale_pixel_20" />
+
+                    <TextView
+                        android:id="@+id/last_changed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/density_pixel_10"
+                        android:text="@{viewModel.getLastChangedTime}"
+                        android:textSize="@dimen/scale_pixel_20" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
