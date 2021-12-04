@@ -22,5 +22,20 @@
         <argument
             android:name="country_code"
             app:argType="string" />
+        <action
+            android:id="@+id/action_countryDetailFragment_to_mapsFragment"
+            app:destination="@id/mapsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mapsFragment"
+        android:name="com.assignment.covid_19cases.ui.MapsFragment"
+        android:label="fragment_maps"
+        tools:layout="@layout/fragment_maps" >
+        <argument
+            android:name="log"
+            app:argType="string" />
+        <argument
+            android:name="lat"
+            app:argType="string" />
     </fragment>
 </navigation>

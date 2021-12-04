@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.assignment.covid_19cases.R
 import com.assignment.covid_19cases.databinding.FragmentCountrDetailBinding
 import com.assignment.covid_19cases.viewmodel.CountryListViewModel
@@ -40,6 +41,9 @@ class CountryDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.markerOnMap.setOnClickListener {
+            findNavController().navigate(CountryDetailFragmentDirections.actionCountryDetailFragmentToMapsFragment(detailViewModel.countryDetail.value?.longitude!!,detailViewModel.countryDetail.value?.latitude!!))
+        }
 
     }
 
