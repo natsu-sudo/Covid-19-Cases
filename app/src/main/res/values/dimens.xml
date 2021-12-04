@@ -7,4 +7,14 @@
     <dimen name="scale_pixel_20">20sp</dimen>
     <dimen name="scale_pixel_24">24dp</dimen>
     <dimen name="scale_pixel_40">40dp</dimen>
+    <dimen name="density_pixel_320">320dp</dimen>
+    <dimen name="density_pixel_350">350dp</dimen>
+    <dimen name="density_pixel_30">30dp</dimen>
+    <dimen name="density_pixel_25">25dp</dimen>
+    <dimen name="density_pixel_15">15dp</dimen>
+    <dimen name="scale_pixel_220">220dp</dimen>
+    <dimen name="density_pixel_300">300dp</dimen>
+    <dimen name="scale_pixel_200">200dp</dimen>
+    <dimen name="scale_pixel_180">180dp</dimen>
+    <dimen name="scale_pixel_50">50dp</dimen>
 </resources>

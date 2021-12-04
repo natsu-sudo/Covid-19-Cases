@@ -1,14 +1,207 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     tools:context=".ui.CountryDetailFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:background="#EAE7E7">
 
-</FrameLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/density_pixel_300"
+            android:background="#CD2B2B" />
+
+        <ImageView
+            android:layout_width="@dimen/scale_pixel_50"
+            android:layout_height="@dimen/scale_pixel_50"
+            android:layout_gravity="right"
+            android:layout_marginEnd="@dimen/scale_pixel_10"
+            android:layout_marginTop="@dimen/scale_pixel_10"
+            app:srcCompat="@drawable/ic_baseline_location_on_24"
+            android:contentDescription="@string/_4_825">
+
+        </ImageView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="@dimen/scale_pixel_180" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/linearLayoutCompat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#00FFFFFF"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toTopOf="@+id/guideline2"
+                tools:layout_editor_absoluteX="25dp">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="170dp"
+                    android:layout_margin="@dimen/density_pixel_10"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_view"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/density_pixel_10"
+                        android:text="@string/deaths"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/scale_pixel_20" />
+
+                    <TextView
+                        android:id="@+id/number_of_deaths"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/density_pixel_10"
+                        android:text="@string/_4_825"
+                        android:textColor="#CD2B2B"
+                        android:textSize="@dimen/scale_pixel_30" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="170dp"
+                    android:layout_margin="@dimen/density_pixel_10"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_view"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/density_pixel_10"
+                        android:text="@string/recovered"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/scale_pixel_20" />
+
+                    <TextView
+                        android:id="@+id/number_of_recoverd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/density_pixel_10"
+                        android:text="@string/_4_825"
+                        android:textColor="#64DD17"
+                        android:textSize="@dimen/scale_pixel_30" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_view"
+                android:layout_marginStart="@dimen/scale_pixel_10"
+                android:layout_marginEnd="@dimen/scale_pixel_10"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat"
+                tools:layout_editor_absoluteX="1dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:layout_margin="@dimen/density_pixel_10"
+                    android:text="@string/active_cases"
+                    android:textSize="@dimen/scale_pixel_20" />
+
+                <TextView
+                    android:id="@+id/active_case"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/scale_pixel_10"
+                    android:layout_marginBottom="@dimen/scale_pixel_20"
+                    android:text="@string/_4_825"
+                    android:textSize="@dimen/scale_pixel_30">
+
+                </TextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="170dp"
+                    android:layout_margin="@dimen/density_pixel_10"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_view"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:layout_margin="@dimen/density_pixel_10"
+                        android:text="@string/serious_critical"
+                        android:textSize="@dimen/scale_pixel_20" />
+
+                    <TextView
+
+                        android:id="@+id/serious"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/density_pixel_10"
+                        android:text="@string/_4_825"
+                        android:textSize="@dimen/scale_pixel_30" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/newcases"
+                    android:layout_width="match_parent"
+                    android:layout_height="170dp"
+                    android:layout_margin="@dimen/density_pixel_10"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_view"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:layout_margin="@dimen/density_pixel_10"
+                        android:text="@string/new_cases"
+                        android:textSize="@dimen/scale_pixel_20" />
+
+                    <TextView
+
+                        android:id="@+id/cases"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/density_pixel_10"
+                        android:text="@string/_4_825"
+                        android:textSize="@dimen/scale_pixel_30" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            </LinearLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+</layout>
