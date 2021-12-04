@@ -18,4 +18,7 @@ interface CountryListDao {
 
     @Query("delete from country_table")
     suspend fun deleteAllData()
+
+    @Query("Select * from country_table where name LIKE '%' || :search || '%' order by name")
+    fun searchForCountry(search:String):LiveData<List<CountriesDetail>>
 }

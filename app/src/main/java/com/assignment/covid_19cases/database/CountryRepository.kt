@@ -22,6 +22,10 @@ class CountryRepository(context: Context) {
         countryListRepo.deleteAllData()
     }
 
+    fun getSimilarListOfCountry(name:String): LiveData<List<CountriesDetail>> {
+        return countryListRepo.searchForCountry(name)
+    }
+
     suspend fun fetchFromNetwork()=try {
         val result=apiService.getListOfCountries()
         Log.d(TAG, "fetchFromNetwork 1: $result")
@@ -43,9 +47,5 @@ class CountryRepository(context: Context) {
         Log.e(TAG, ex.message.toString())
         LoadingStatus.error(ErrorCode.UNKNOWN_ERROR)
     }
-
-
-
-
 
 }

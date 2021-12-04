@@ -47,6 +47,7 @@ class CountryListAdapter(private val listener:(String)->Unit): ListAdapter<Count
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         if (position==0){
+            previous=""
             current= getItem(position).name[0].toString()
         }else{
             current= getItem(position).name[0].toString()

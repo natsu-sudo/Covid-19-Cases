@@ -6,6 +6,8 @@ import android.net.NetworkCapabilities
 import android.os.Build
 import android.os.Bundle
 import android.telephony.TelephonyManager
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -73,10 +75,12 @@ class CountryListFragment : Fragment() {
             when (loadingStatus?.status) {
                 (Status.LOADING) -> {
                     binding.progressBar.visibility = View.VISIBLE
+                    binding.loadingStatusText.visibility=View.GONE
                     Log.d(TAG, "onViewCreated: Status loading")
                 }
                 (Status.SUCCESS) -> {
                     binding.progressBar.visibility = View.GONE
+                    binding.loadingStatusText.visibility = View.GONE
                 }
                 (Status.ERROR) -> {
                     binding.loadingStatusText.visibility = View.VISIBLE
@@ -85,6 +89,7 @@ class CountryListFragment : Fragment() {
                 }
                 else -> {
                     binding.progressBar.visibility = View.GONE
+                    binding.loadingStatusText.visibility = View.GONE
                 }
             }
             binding.swipeUp.isRefreshing = false
@@ -93,27 +98,38 @@ class CountryListFragment : Fragment() {
         binding.swipeUp.setOnRefreshListener {
             Log.d(TAG, "onViewCreated: " + countryListViewModel.getList.value?.isEmpty())
             if (countryListViewModel.getList.value?.isEmpty() != true && isOnline(requireActivity())){
+                countryListViewModel.setCountryName("")
                 countryListViewModel.deleteData()
+
             }else{
                 Snackbar.make(binding.root, getString(R.string.network_error), Snackbar.LENGTH_LONG)
                     .setAction(getString(R.string.ok)) {
-
                     }
                     .show()
                 binding.swipeUp.isRefreshing=false
             }
-
         }
 
-        countryListViewModel.getList.observe(viewLifecycleOwner, Observer {
+        countryListViewModel.listToBeShownOnScreen.observe(viewLifecycleOwner, Observer {
             (binding.listRecycler.adapter as CountryListAdapter).submitList(it)
             if (it.isEmpty()) {
                 countryListViewModel.fetchFromNetwork()
             }
         })
 
+        binding.editTextInput.addTextChangedListener(object :TextWatcher{
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
 
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                Log.d(TAG, "onTextChanged: $s  $start $before $count")
+                countryListViewModel.setCountryName(s.toString())
+            }
 
+            override fun afterTextChanged(s: Editable?) {
+            }
+
+        })
 
     }
 
